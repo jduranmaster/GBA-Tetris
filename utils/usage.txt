@@ -1,0 +1,160 @@
+pcx2gba Conversion Utility
+--------------------------
+
+
+Contents 
+--------
+1. About pcx2gba 
+2. Usage 
+3. Version Info 
+4. Known Bugs 
+5. Future Plans 
+6. Disclaimer 
+7. About Me 
+
+
+About pcx2gba
+-------------
+I wrote this utility shortly after beginning work on GBA programming. I saw a similar
+utility by Dovoto on his PERN site (http://www.thepernproject.com/) and thought
+it would not be too hard to create one of my own. This way I could customise the way
+I export the data to my needs - and so have decided to release this utility into the 
+big old WWW for others to use if so desired. You can freely distribute it, so long as 
+you leave the kit in its original state and content :) I dont mind however if you add
+a weblink/file_id - so long as you dont remove any of the files.
+
+If you have any suggestions/comments/bugs or even if you have found it useful, 
+please feel free to email me on aburch@spinifex.net. God knows they are there. I keep
+finding them - mainly because I don't get a chance to work the balls off each mode
+during testing.. so if you find a bug, please contact me :)
+
+If you have problems converting a PCX image of yours, send it along and I will take
+a look as to why my converter is rejecting it.
+
+Please note that the ASM examples that are attached with this convertor were written for
+the goldroad ARM asm compiler - you can find the latest version at http://www.goldroad.co.uk
+ 
+
+pcx2gba Usage
+-------------
+pcx2gba.exe mode image outfile [name]
+
+The currently supported modes are:
+GBA3 
+- Image data in RAW 16bit values
+- Used with GBA Mode 3
+- Can process 8Bit & 24Bit PCX Images
+
+GBA4A 
+- Produces a .pal and .raw file. Image data in 8bit values, palette in 16bit values 
+- Used with GBA Mode 4
+- 8Bit PCX Images Only
+
+GBA4B 
+- Palette & Image data in .raw file. Palette (16bit values) is first, followed by image (8bit values)
+- Used with GBA Mode 4
+- 8Bit PCX Images Only
+
+TXT3 
+- Outputs image in 16bit values into an array in a C header file
+- Used with GBA Mode 3
+- Can process 8Bit & 24Bit PCX Images
+
+TXT4 
+- Outputs image in 16bit values (2 pixels per value), and palette in 16bit values into an array in a C header file
+- Used with GBA Mode 4
+- 8Bit PCX Images Only
+
+SPR4T
+- Outputs image as a Sprite/Tiles (Cuts images up into 8x8 pixel blocks) and in a C header file format
+- 8 Bit PCX Images Only
+
+SPR4A
+- Produces a .pal and .raw file for a Sprite/Tiles. Identicle to GBA4A, except image broken up into 8x8 blocks
+- 8Bit PCX Images Only
+
+SPR4B
+- Produces a single binary file containing palette & image data. Identicle to GBA4B except image broken up into 8x8 blocks
+- 8Bit PCX Images Only
+
+MAP4T, MAP4A, MAP4B
+- Are identicle to the sprite output modes, except it handles images with width/height any size that is a multiple of 8 (eg 8x8, 24x8, 72x24)
+
+The [name] parameter is only required with the TXT (and SPR4T/MAP4T) output modes. This is the array
+name given to the outputted data. Its just so you can identify the image in your C source 
+code. So your output file will look like:
+
+USHORT samplePAL[] = {0x001f,0x001f, ...};
+USHORT sampledat[] = {0x2332,0x2332, ...};
+
+when you use sample as your [name] value.
+
+For example source on how to use the output for all these modes, i've included a zip 
+which contains some ASM and GCC examples. You will need the goldroad assembler to do 
+anything with the ASM source. I included them more for you to look at and understand 
+how to use the output rather then be a tutorial. I plan to write some basic tutorials
+over the next few months - email me if your interested. I plan to put them onto my website
+which is currently under development.
+
+The examples are just that - many improvements/optimisations could be made, ive only included
+some basic samples - the rest will be up to you :) I havent documented the C code - but there
+is not much too it, so i suspect you all will follow it :) The ASM has some small comments
+that may help follow whats going on. 
+ 
+
+Version Info 
+------------
+Versions 1.00 to 1.07
+Private builds. It started as a PCX to TXT converter, then I expanded as needed.
+These versions were also minor bug fixes and better error handling/reporting.
+
+Version 1.08
+The first public release of this utility
+Feeling confident all the bugs are ironed out :)
+All current features are as documented above
+
+Version 1.09 
+Added Support for Sprites (3 new modes added, 2 binary, 1 text)
+Sprite output mode examples added
+
+Version 1.10
+Added Support for Tile Output (3 New modes)
+Fixed Major bug with Original GBA & TXT output modes
+Added new ASM example for Sprites 
+ 
+
+Known Problems 
+--------------
+At present, It sometimes has trouble converting 24bit PCX Images created in Photoshop. Im currently
+looking into why this happens and a patch to cover it. I've found any images like this once loaded
+and saved (still 24bit) in a program like paintshop pro gets around the problem and it will then 
+convert your image.
+
+I've also had some difficulty with Images with odd pixel widths.. Im looking into this
+ 
+
+Future Plans
+------------
+Image modes
+  Give more support to 24bit images for all output modes
+  Test the balls off all modes to eliminate the remaining bugs
+
+Sprite Modes
+  Support images that don't fit the 8,16,32,64 pixels in height and width rule 
+  and just pad the left over space with empty pixels 
+ 
+
+Disclaimer 
+----------
+Use this at your own risk. If you don't accept this then please delete the utility and
+move on. 
+ 
+
+About Me
+--------
+My real name is Andrew, I'm 22 years of age and live in Melbourne, Australia. I cut code
+for a small company here in Melbourne called Spinifex computing, and while its quiet i 
+dabble in Gameboy Advance programming :) You can contact me on either aburch@spinifex.net 
+or jesder22@dingoblue.net.au (the dingoblue account wont be open much longer though) 
+
+- Jesder (April 9th 1:20pm)
