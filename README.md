@@ -1,4 +1,4 @@
-# GBA-caster
+# GBA-TETRIS
 A repository to storage the source code of a homebrew Tetris Game Engine for Game Boy Advance.
 The Tetris Game Engine has been developed in C programming language and DEVKITADV develpment kit.
 
