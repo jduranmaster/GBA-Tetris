@@ -1,15 +1,3 @@
-/*************************************************************************
- * Module :  tetris_title.c
- *
- * Author : Choopan Rattanapoka (choopanr@hotmail.com)
- *
- *
- * Description :
- *    Collection of functions that perform about display title screen
- *
- **************************************************************************
- * Date   :    May 25, 2003
- *************************************************************************/  
 #include "gba.h"
 #include "keypad.h"
 #include "tetris_title.h"

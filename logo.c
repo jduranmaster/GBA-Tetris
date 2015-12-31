@@ -1,15 +1,3 @@
-/*************************************************************************
- * Module :  logo.c
- *
- * Author : Choopan Rattanapoka (choopanr@hotmail.com)
- *
- *
- * Description :
- *    Collection of functions that perform about display logo screen
- *
- **************************************************************************
- * Date   :    May 25, 2003
- *************************************************************************/  
 #include "gba.h"
 #include "logo.h"
 
