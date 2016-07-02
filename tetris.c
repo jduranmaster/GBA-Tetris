@@ -1583,8 +1583,6 @@ int main(void)
 	REG_DISPCNT = MODE_4 | BG2_ENABLE; 	// Enable mode 4
 	
 	EraseScreen();
-	//Display PingPong Logo			
-	//LogoDisplay();
 	
 	// logo - saludIntro
 	for(loop=0;loop<256;loop++) {
